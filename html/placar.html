@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Placar</title>
+
+    <link rel="stylesheet" href="/html/style.css">
+</head>
+
+<body>
+
+<h1>Placar</h1>
+
+<p id="placar"></p>
+
+<button onclick="window.location.href='/inicio'">
+    Voltar
+</button>
+
+<script>
+
+    async function mostrarPlacar() {
+
+        let resposta = await fetch("/placar");
+
+        let dados = await resposta.json();
+
+        document.getElementById("placar").innerText =
+            "X: " + dados.x + " vitórias | O: " + dados.o + " vitórias";
+    }
+
+    mostrarPlacar();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da Velha</title>
+    <link rel="stylesheet" href="/html/inicio.css">
+</head>
+
+<body>
+
+<h1 class="titulo">Jogo da Velha</h1>
+
+<h2 class="subtitulo">Apresentação do projeto</h2>
+
+<p class="descricao">
+    Este projeto é um jogo da velha desenvolvido para praticar
+    programação, HTML, CSS, JavaScript e Python.
+</p>
+
+<h2 class="subtitulo">Digite seu nome</h2>
+
+<input class="campo-nome" type="text" id="nome"
+       placeholder="Digite seu nome">
+
+<button class="botao salvar" onclick="salvarNome()">
+    Salvar nome
+</button>
+
+<p class="mensagem" id="mensagem"></p>
+
+<button class="botao jogador"
+        onclick="window.location.href='/jogador'">
+    Jogador vs Jogador ❯
+</button>
+
+<button class="botao bot"
+        onclick="window.location.href='/jogo'">
+    Jogador vs Bot
+</button>
+
+<script>
+
+   
+    let nomeUsuario = "";
+
+    function salvarNome() {
+
+        nomeUsuario = document.getElementById("nome").value;
+
+        document.getElementById("mensagem").innerText =
+            "Nome salvo: " + nomeUsuario;
+    }
+
+</script>
+
+</body>
+</html>

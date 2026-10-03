@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    background: #0d0d0d;
+
+    color: white;
+
+    padding: 30px 15px;
+}
+
+h1 {
+    font-size: 55px;
+    font-weight: bold;
+
+    color: white;
+
+    margin-bottom: 5px;
+
+    text-shadow:
+        3px 3px 0px #d90404;
+}
+
+#tabuleiro {
+    width: 320px;
+
+    padding: 10px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 7px 18px #000000;
+}
+
+.casa {
+    width: 90px;
+    height: 90px;
+
+    padding: 0;
+    margin: 5px;
+
+    background: #222;
+
+    color: white;
+
+    font-size: 40px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    line-height: 90px;
+    vertical-align: top;
+}
+
+.casa:hover {
+    transform: scale(1.03);
+
+    filter: brightness(1.15);
+}
+
+.casa.x {
+    background: #e00000;
+
+    color: white;
+
+    box-shadow:
+        0 0 10px #e00000;
+}
+
+.casa.o {
+    background: #0d0d0d;
+
+    color: white;
+
+    box-shadow:
+        0 0 10px #ffffff;
+}
+
+#resultado {
+    min-height: 20px;
+
+    font-size: 20px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    color: #ff0000;
+
+    font-weight: bold;
+}
+
+button:not(.casa) {
+    width: 250px;
+
+    min-height: 55px;
+
+    padding: 15px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 17px;
+
+    background: #e00000;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    box-shadow:
+        0 7px 18px #000000;
+}
+
+button:not(.casa):hover {
+    transform: translateY(-3px);
+
+    filter: brightness(1.15);
+
+    box-shadow:
+        0 0 10px #e00000,
+        0 10px 22px #000000;
+}
+
+button:not(.casa):active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 40px;
+    }
+
+    #tabuleiro {
+        width: 300px;
+    }
+
+    .casa {
+        width: 82px;
+        height: 82px;
+
+        font-size: 35px;
+
+        line-height: 82px;
+    }
+
+    button:not(.casa) {
+        width: 90%;
+
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,76 @@
+/* Reseta margem e espaçamento padrão do navegador */
+
+* {
+  margin: 0;
+  padding: 0;
+  }
+
+/* Estilo geral da página */
+body {
+background-color: #222;
+color: white;
+text-align: center;
+font-family: Arial, sans-serif;
+}
+
+/* Título */
+h1 {
+margin-top: 20px;
+margin-bottom: 20px;
+}
+
+/* Caixa que contém o tabuleiro */
+#tabuleiro {
+margin: 0px auto;
+width: 320px;
+background-color: white;
+padding: 10px;
+border-radius: 10px;
+}
+
+/* Cada casinha do jogo */
+
+.casa {
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+  padding: 0;
+  background-color: #333;
+  color: white;
+  font-size: 40px;
+  line-height: 90px;
+  border: none;
+  border-radius: 5px;
+  vertical-align: top;
+}
+
+/* Cor do X */
+.casa.x {
+  color: white;
+  background-color: red;
+}
+
+/* Cor do O */
+.casa.o {
+  color: white;
+  background-color: blue;
+}
+
+/* Texto do resultado */
+#resultado {
+font-size: 20px;
+margin-top: 15px;
+margin-bottom: 15px;
+}
+
+/* Botão de reiniciar */
+button:not(.casa) {
+background-color: red;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+font-size: 16px;
+margin: 5px;
+}
+

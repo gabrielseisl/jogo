@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Jogo da Velha</title>
+
+    <link rel="stylesheet" href="/html/style.css">
+</head>
+
+<body>
+
+<h1>Jogo da Velha</h1>
+
+<div id="tabuleiro">
+
+    <button class="casa" onclick="jogar(0)"></button>
+    <button class="casa" onclick="jogar(1)"></button>
+    <button class="casa" onclick="jogar(2)"></button>
+
+    <button class="casa" onclick="jogar(3)"></button>
+    <button class="casa" onclick="jogar(4)"></button>
+    <button class="casa" onclick="jogar(5)"></button>
+
+    <button class="casa" onclick="jogar(6)"></button>
+    <button class="casa" onclick="jogar(7)"></button>
+    <button class="casa" onclick="jogar(8)"></button>
+
+</div>
+
+<p id="resultado"></p>
+
+<button onclick="reiniciar()">
+    Reiniciar
+</button>
+
+<button onclick="voltar()">
+    Voltar
+</button>
+
+<button onclick="window.location.href='/Placar'">
+    Placar
+</button>
+
+<script src="/sons.js"></script>
+
+<script>
+
+    async function jogar(posicao) {
+
+        let resposta = await fetch("/jogar/" + posicao, {
+            method: "POST"
+        });
+
+        let dados = await resposta.json();
+
+        let casas = document.querySelectorAll(".casa");
+
+        for (let i = 0; i < 9; i++) {
+
+            casas[i].innerText = dados.tabuleiro[i];
+
+            casas[i].classList.remove("x");
+            casas[i].classList.remove("o");
+
+            if (dados.tabuleiro[i] == "X") {
+                casas[i].classList.add("x");
+            }
+
+            if (dados.tabuleiro[i] == "O") {
+                casas[i].classList.add("o");
+            }
+        }
+
+        document.getElementById("resultado").innerText =
+            dados.resultado;
+
+        if (dados.resultado.includes("ganhou")) {
+
+            if (typeof tocarSomVitoria === "function") {
+                tocarSomVitoria();
+            }
+
+        }
+
+        if (dados.resultado == "Empate!") {
+
+            if (typeof tocarSomEmpate === "function") {
+                tocarSomEmpate();
+            }
+
+        }
+    }
+
+
+    async function reiniciar() {
+
+        let resposta = await fetch("/reiniciar", {
+            method: "POST"
+        });
+
+        let dados = await resposta.json();
+
+        let casas = document.querySelectorAll(".casa");
+
+        for (let i = 0; i < 9; i++) {
+
+            casas[i].innerText = dados.tabuleiro[i];
+
+            casas[i].classList.remove("x");
+            casas[i].classList.remove("o");
+        }
+
+        document.getElementById("resultado").innerText = "";
+    }
+
+
+    async function voltar() {
+
+        await fetch("/reiniciar", {
+            method: "POST"
+        });
+
+        window.location.href = "/inicio";
+    }
+
+
+    window.addEventListener("pageshow", async function(event) {
+
+        if (event.persisted) {
+
+            await fetch("/reiniciar", {
+                method: "POST"
+            });
+
+            window.location.reload();
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
